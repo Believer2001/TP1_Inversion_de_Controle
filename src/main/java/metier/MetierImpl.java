@@ -15,4 +15,10 @@ public class MetierImpl implements IMetier {
     public void setDao(IDao dao) {
         this.dao = dao;
     }
+
+    // on cree le construteur pour la l'inversion de controle par instanciation dynamique
+    public MetierImpl(IDao dao)
+    {
+        this.dao = dao;
+    }
 }
