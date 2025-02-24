@@ -7,5 +7,5 @@ Dans ce Tp nous avons mis en application le principe d'onversion de controle a t
 -  Implementatioon de la l'inversion de  controle par instanciation Dynamique
 -  Implementation de l'inversion de controle par instanciation  par  statique
 -  Implementtation de l'inversion  de controle en utilisant le Frame Spring notment:
-  - - Version  XML
-  - - Version anotation
+   - Version  XML
+   - Version anotation
