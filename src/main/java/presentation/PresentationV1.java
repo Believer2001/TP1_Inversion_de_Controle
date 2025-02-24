@@ -9,6 +9,6 @@ public class PresentationV1 {
         DaoImpl d= new DaoImpl();
         MetierImpl metier=  new MetierImpl();
         metier.setDao(d);
-        System.out.println(metier.calcul());
+        System.out.println("resultat:"+metier.calcul());
     }
 }
