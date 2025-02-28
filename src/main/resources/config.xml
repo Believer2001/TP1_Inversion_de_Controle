@@ -1,0 +1,18 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="d" class="ext.DaoImplv2"></bean>
+    <bean id="metier" class="metier.MetierImpl" >
+      <!--  on injection de dependance en utilisant le setteur
+       ctd le  constructeur sans parametre
+
+        <property name="dao" ref="d"> </property>
+        -->
+
+        <!-- injection de dependance en utilisant l construceur avec paramente-->
+
+        <constructor-arg ref="d"></constructor-arg>
+    </bean>
+</beans>
