@@ -16,9 +16,12 @@ public class MetierImpl implements IMetier {
         this.dao = dao;
     }
 
-    // on cree le construteur pour la l'inversion de controle par instanciation dynamique
+    // on cree le constructeur pour la l'inversion de controle par instanciation dynamiqu
     public MetierImpl(IDao dao)
     {
         this.dao = dao;
+    }
+
+    public MetierImpl() {
     }
 }

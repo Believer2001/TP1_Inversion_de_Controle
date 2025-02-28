@@ -1,24 +1,45 @@
 package presentation;
 
-import dao.DaoImpl;
-import metier.MetierImpl;
+
+import dao.IDao;
+import metier.IMetier;
+
+import java.io.File;
+import java.lang.reflect.Method;
+import java.util.Scanner;
 
 public class PresentationV1 {
     public  static  void main(String []args )
     {
-        // inversion de controle par instanciaion statique
-        DaoImpl d= new DaoImpl();
-       /* MetierImpl metier=  new MetierImpl();
-       // metier.setDao(d); // inversion de contole via un setteur
-        System.out.println("resultat:"+metier.calcul());
-*/
-        // inversion de contole par instanciiation dynamique
-        // nous allons  nous servir du constructeur de la classe metier plutot
-         // d'utiliser du setteur comme dans le cas preceddent
+        try {
 
-         MetierImpl metier= new MetierImpl(d);
-        System.out.println("resultat :"+metier.calcul());
+            Scanner  scanner =new Scanner(new File("config.txt"));
+            String daoClassName = scanner.nextLine();
+            Class cDao = Class.forName(daoClassName);
+            IDao dao= (IDao) cDao.getConstructor().newInstance();
 
+            // instation dynamique via le constructeur avec parametre .
+            /*
+            String metierclassName =scanner.nextLine();
+            Class cMetier = Class.forName(metierclassName);
+            IMetier cM= (IMetier)cMetier.getConstructor(IDao.class).newInstance(dao);
+            */
+            // via  le  constructeur sans parametre
+            // on d fait appelle au setteur
+            String metierclassName =scanner.nextLine();
+            Class cMetier = Class.forName(metierclassName);
+            IMetier cM= (IMetier)cMetier.getConstructor().newInstance();
 
+            Method  setDao = cMetier.getDeclaredMethod("setDao",IDao.class);
+            setDao.invoke(cM,dao);
+
+            System.out.println("resultat : "+cM.calcul());
+
+        }
+        catch (Exception e)
+        {
+          System.out.println(e.getMessage());
+        }
     }
+
 }
